@@ -1,0 +1,68 @@
+
+<mat-card class="card">
+     <mat-card-header>
+        <mat-card-title>Incluir Produtos</mat-card-title>
+      </mat-card-header>
+      <img src="assets/imagens/Adicionar_Produto.jpg">
+    <mat-card-content>
+        <form [formGroup]="formProduto">
+            <div class="example-form-fields">
+            <mat-form-field appearance="outline" 
+            style="width: 30%;margin-right: 5px;">
+                <mat-label>Codigo</mat-label>
+                <input matInput placeholder="Codigo do Produto" formControlName="codigo">
+            </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Nome</mat-label>
+            <input matInput placeholder="Nome do Produto" formControlName="nome">
+        </mat-form-field>
+            </div>
+        <mat-form-field appearance="outline">
+            <mat-label>Fornecedor</mat-label>
+            <mat-select  formControlName="fornecedor">
+            <mat-option value="1">
+                Produto Proprio
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div class="example-form-fields">
+        <mat-form-field appearance="outline" 
+        style="width: 45%;margin-right: 5px;">
+            <mat-label>Quantidade</mat-label>
+            <input matInput placeholder="Quantidade do Produto" formControlName="quantidade" type="number">
+        </mat-form-field>        
+    <mat-form-field appearance="outline">
+            <mat-label>Compra</mat-label>
+            <span matPrefix style="margin-left: 15px;">R$ &nbsp;</span>
+            <input matInput 
+            placeholder="Valor pago" 
+            formControlName="compra"             
+            [value]="formProduto.get('compra').value"
+
+            >
+    </mat-form-field>    
+        </div>
+    <mat-form-field appearance="outline">
+           <mat-label>Venda</mat-label>
+           <span matPrefix style="margin-left: 15px;">R$ &nbsp;</span>
+           <input 
+           matInput 
+           placeholder="Valor para Venda" 
+           formControlName="venda" 
+           [value]="formProduto.get('venda').value"
+           >
+    </mat-form-field>
+</form>
+</mat-card-content>
+<mat-divider>
+</mat-divider>
+<mat-card-actions align="end">
+    <button mat-mini-fab color="primary" style="margin: 0 5px;" (click)="IncluirProduto()" [disabled]="!formProduto.valid">
+        <mat-icon>save</mat-icon>
+      </button>
+      <button mat-mini-fab color="accent" style="margin: 0 5px;" (click)="Voltar()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+  </mat-card-actions>
+  <mat-divider></mat-divider>
+</mat-card>		

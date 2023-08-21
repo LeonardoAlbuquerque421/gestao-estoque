@@ -1,0 +1,17 @@
+.container{
+    .imagem-fundo{
+        display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  opacity: 0.2;
+    }
+}
+
+.card-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 16px;
+    margin-bottom: 40px;
+}

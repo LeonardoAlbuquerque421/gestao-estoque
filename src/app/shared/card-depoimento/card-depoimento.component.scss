@@ -1,0 +1,36 @@
+.card-depoimento{
+
+    max-width: 320px;
+    margin-bottom: 10px;
+
+    .mat-mdc-card-header{
+        padding:0px;
+    }
+
+    .mat-mdc-card-sm-image{
+        margin-top: 8px;
+    }
+    
+    .mat-mdc-card-content:last-child{
+        padding:5px
+    }
+
+    display: flex;
+    padding: 12px 24px 12px 16px;
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
+
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+
+    .informacao{
+        margin: 0px 0px;
+    }
+    .assinatura{
+        font-weight: bold;
+    }
+}

@@ -1,0 +1,41 @@
+.logo{
+    position:absolute;
+    width: 100vw;;
+    height: 100vh;
+}
+
+.main{
+        color: rgb(8, 8, 8);
+        text-align: center;
+        font-size: 25px;
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+
+    .titulo-login{
+        text-shadow: 1px 1px 2px rgb(73, 32, 66), 0 0 25px blue, 0 0 5px darkblue;
+    }
+
+    .form-login{
+        width: 400px;
+        padding: 10px 10px;
+
+        border: solid rgb(131, 127, 127) 1px;
+
+        button{
+            margin-bottom: 10px;
+        }        
+
+        .desativo{
+            display: none;
+        }
+       
+    }
+}

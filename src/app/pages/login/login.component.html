@@ -1,0 +1,40 @@
+   <div class="container">
+    <img  class="logo" src="assets/logo/login-estoque-lm.jpg" alt="Imagem logo tipo da adega">
+
+    <form [formGroup]="loginForm">
+
+        <mat-card class="form-login">
+        <h1 class="main" >Gestão de Estoque - LM</h1>
+        <div style="text-align: center;">
+        </div>
+
+        <mat-form-field appearance="outline">
+         <mat-icon matPrefix>people</mat-icon>
+         <mat-label>Usuario</mat-label>
+         <input type="text" formControlName="usuario" matInput placeholder="Usuario">
+         <div *ngIf="usuario.errors?.['required'] && (usuario.dirty || usuario.touched)"> 
+             <span>Será necessário informar o usuário</span>
+        </div>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline">
+         <mat-icon matPrefix>password</mat-icon>
+         <mat-label>Senha</mat-label>
+         <input type="password" formControlName="senha" matInput placeholder="Senha">
+         <div *ngIf="usuario.errors?.['senha'] && (senha.dirty || senha.touched)"> 
+            <span>Será necessário informar o usuário</span>
+       </div>
+        </mat-form-field>
+
+          <button  type="button" mat-raised-button color="primary"       
+          [disabled]="!loginForm.valid"   
+          (click)="EfetuarLogin()">
+            Entrar
+        </button>
+
+        <mat-progress-bar mode="indeterminate" *ngIf="loding">
+        </mat-progress-bar>
+    </mat-card>
+    </form>
+    </div>

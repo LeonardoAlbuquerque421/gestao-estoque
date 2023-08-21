@@ -1,0 +1,59 @@
+
+.app-header{
+
+    max-width: 100%;
+
+    button{
+        margin:0 16px;
+        max-width: 100%;
+    }
+    
+    .spacer {
+        // flex: 1 1 auto;
+        margin-right: auto;
+    }
+    .mat-toolbar{
+       background-color: rgb(12, 12, 12);
+       color:white;
+       padding: 0 0;
+       max-width: 100%;
+       max-height: 100%;
+    }
+  
+    .mat-mdc-outlined-button:not(:disabled){
+        background-color: white;
+    }
+        .logo-tipo{
+        border-radius: 100%;
+        width: 5;
+        height: 100%;
+        }
+}
+
+
+.container{
+display: flex;
+flex-direction: column;
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+}
+
+.mobile .example-toolbar {
+position: fixed;
+z-index: 2;
+}
+
+h1.example-app-name {
+    margin-left: 8px;
+}
+
+.sidenav-container {
+    flex: 1 1 auto;
+}
+
+.mobile .sidenav-container {
+    flex: 1 0 auto;
+}
