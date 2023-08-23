@@ -1,7 +1,7 @@
    <div class="container">
     <img  class="logo" src="assets/logo/login-estoque-lm.jpg" alt="Imagem logo tipo da adega">
 
-    <form [formGroup]="loginForm">
+    <form [formGroup]="loginForm" (keydown)="EnterSubmit($event,loginForm)">
 
         <mat-card class="form-login">
         <h1 class="main" >Gestão de Estoque - LM</h1>

@@ -20,8 +20,8 @@
         <mat-form-field appearance="outline">
             <mat-label>Fornecedor</mat-label>
             <mat-select  formControlName="fornecedor">
-            <mat-option value="1">
-                Produto Proprio
+            <mat-option *ngFor="let f of fornecedores" [value]="f.id">
+                {{f.razaoSocial}}
               </mat-option>
             </mat-select>
         </mat-form-field>
@@ -39,8 +39,9 @@
             <span matPrefix style="margin-left: 15px;">R$ &nbsp;</span>
             <input matInput 
             placeholder="Valor pago" 
-            formControlName="compra"         
-            mask="separator.2" thousandSeparator="." [leadZero]="true">
+            formControlName="compra"  
+            type="text"       
+            mask="separator.2" [leadZero]="true">
         </mat-form-field>    
         </div>
     </form>
