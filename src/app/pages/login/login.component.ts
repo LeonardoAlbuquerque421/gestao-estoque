@@ -41,28 +41,20 @@ export class LoginComponent {
 
    const myObserver = {
     next: (x: LoginResponse[]) =>{ 
-      if(x[0].sucess === true){
+      if(x.length> 0 && x[0].sucess === true){
         this.router.navigateByUrl('dashboard/home');
       }else{
-
-        // let config = new MatDialogConfig()      
-        // config.minWidth = "400px";
-        // config.maxWidth = "900px";          
-        // config.enterAnimationDuration = '2000ms';
-        // config.exitAnimationDuration = '1000ms';
-  
-        // this.dialog.open(ModalComponent,config)
         this.modalService.AbrirModal("Não foi possível realizar o login , tente novamente")
-        this.loding = false;
       }
     },
-    error: (err: any) => {  
-      console.log(err);
+    error: (err: any) => {      
       this.modalService.AbrirModal(err.message)
-      this.loding = false;
-
+    },catch: (c : any)=>{
+      this.modalService.AbrirModal(c.message)
     },
-    complete: () => {    },
+    complete: () => {    
+      this.loding = false;
+    },
    }
 
    this.loginService.Login(loginSignature).subscribe(myObserver);
