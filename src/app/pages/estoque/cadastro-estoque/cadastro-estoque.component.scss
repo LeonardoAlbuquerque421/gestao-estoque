@@ -5,6 +5,9 @@
     margin: 15px auto;
     box-shadow: 4px 5px lightblue;
     border: solid gray 1px;
+    mat-card-content{
+      margin-top: 5px;
+    }
   }
 
   mat-form-field{

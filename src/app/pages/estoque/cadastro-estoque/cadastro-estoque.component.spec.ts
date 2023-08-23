@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdicionarProdutoComponent } from './adicionar-produto.component';
+import { AdicionarProdutoComponent } from './cadastro-estoque.component';
 
 describe('AdicionarProdutoComponent', () => {
   let component: AdicionarProdutoComponent;

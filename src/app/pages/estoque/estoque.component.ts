@@ -1,7 +1,10 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Estoque } from 'src/app/model/estoque';
+import { EstoqueResponse } from 'src/app/model/response/estoqueResponse';
+import { EstoqueService } from 'src/app/services/estoque.service';
 
 export interface PeriodicElement {
   codigo: number;
@@ -27,17 +30,34 @@ const ELEMENT_DATA: PeriodicElement[] = [
   templateUrl: './estoque.component.html',
   styleUrls: ['./estoque.component.scss']
 })
-export class EstoqueComponent implements AfterViewInit  {
+export class EstoqueComponent implements OnInit , AfterViewInit  {
 
-  displayedColumns: string[] = ['Codigo','Nome', 'Quantidade', 'Compra', 'Venda','Ação'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  displayedColumns: string[] = ['Codigo','Nome', 'Quantidade', 'Compra', 'Ação'];
 
+  estoque : Estoque[]=[];
+  dataSource = new MatTableDataSource(this.estoque);
 
-  
-
-  constructor(){
-    this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+  constructor(private estoqueService:EstoqueService){    
 }
+  ngOnInit(): void {
+    this.estoqueService.Obter().subscribe(x =>{
+      this.ObterEstoque(x);
+      this.dataSource.data = this.estoque;
+    })
+  }
+
+  ObterEstoque(estoqueResponse : EstoqueResponse[]){
+    estoqueResponse.forEach(x =>{
+
+      let estoque = new Estoque();
+      estoque.codigo = x.codigo;
+      estoque.nome = x.nome;
+      estoque.quantidade = x.quantidade
+      estoque.compra = x.compra;
+      this.estoque.push(estoque);
+    })
+  }
+
 
   @ViewChild(MatPaginator) paginator: any ;
   @ViewChild(MatSort) sort: any;
@@ -47,8 +67,6 @@ export class EstoqueComponent implements AfterViewInit  {
 
     this.paginator.MatPaginatorIntl = new MatPaginatorIntl();
     this.paginator.MatPaginatorIntl.itemsPerPageLabel = "Items por Tela";
-
-    console.log(this.paginator.MatPaginatorIntl);
   }
 
   Filtrar(event: Event) {

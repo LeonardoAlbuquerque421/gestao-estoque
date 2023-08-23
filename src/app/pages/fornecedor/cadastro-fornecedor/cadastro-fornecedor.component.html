@@ -1,0 +1,184 @@
+
+<mat-card class="card">
+    <div>
+        <mat-divider></mat-divider>
+    </div>
+    <mat-card-header class="titulo-card">
+       <mat-card-title class="titulo" >Cadastro de Fornecedores</mat-card-title>
+     </mat-card-header>
+     <div>
+        <mat-divider></mat-divider>
+    </div>
+     <!-- <img src="assets/imagens/Adicionar_Produto.jpg"> -->
+   <mat-card-content>
+       <form [formGroup]="formularioFornecedor">
+        <div class="formulario-descricao">
+            <h2>Dados do Fornecedor</h2>
+        </div>
+        <div class="formulario-responsivo">
+            <mat-divider></mat-divider>
+            <mat-form-field appearance="outline" style="width: 400px;">
+                <mat-label>
+                 Razão Social
+                </mat-label>
+                <input matInput 
+                placeholder="Razão Social"
+                formControlName="razaoSocial"
+                >
+                <mat-error *ngIf="!formularioFornecedor.hasError('required')">
+                    Preenchimento obrigatório
+                  </mat-error>
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline" style="width: 200px;">
+                <mat-label>
+                    CNPJ
+                </mat-label>
+                <input matInput placeholder="CNPJ" mask="00.000.000/0000-00" 
+                formControlName="cnpj">
+                <mat-error *ngIf="!formularioFornecedor.hasError('required')">
+                    Preenchimento obrigatório
+                  </mat-error>
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" style="width: 200px;">
+                <mat-label>
+                    Inscrição Estadual
+                </mat-label>
+                <input matInput placeholder="Inscrição Estadual" mask="000.000.000.000"
+                formControlName="inscricaoEstadual">
+                <mat-error *ngIf="!formularioFornecedor.hasError('required')">
+                    Preenchimento obrigatório
+                  </mat-error>
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" style="width: 350px;">
+                <mat-label>Ramo de Atividade</mat-label>
+                <mat-select formControlName="ramoAtividade">
+                <mat-option value="1">Industria</mat-option>
+                <mat-option value="1">Comercio</mat-option>
+                <mat-option value="1">Serviço</mat-option>
+                </mat-select>
+                <mat-error *ngIf="!formularioFornecedor.hasError('required')">
+                    Preenchimento obrigatório
+                  </mat-error>
+            </mat-form-field>
+           </div>    
+        <mat-divider></mat-divider>
+        <div class="formulario-descricao">
+        <h2>Endereço</h2>
+        </div>
+        <div class="formulario-responsivo">
+            <mat-form-field appearance="outline">
+                <mat-label>
+                    CEP
+                </mat-label>
+               <input matInput placeholder="CEP" mask="00000-000"
+               formControlName="cep">
+               <mat-error *ngIf="!formularioFornecedor.hasError('required')">
+                Preenchimento obrigatório
+              </mat-error>
+            </mat-form-field>            
+        <mat-form-field appearance="outline" style="width: 400px;">
+            <mat-label>
+                Rua
+            </mat-label>
+            <input matInput placeholder="Rua" 
+            formControlName="rua">
+            <mat-error *ngIf="!formularioFornecedor.hasError('required')">
+                Preenchimento obrigatório
+              </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width: 300px;">
+            <mat-label>
+                Bairro
+            </mat-label>
+            <input matInput placeholder="Bairro" 
+            formControlName="bairro">
+            <mat-error *ngIf="!formularioFornecedor.hasError('required')">
+                Preenchimento obrigatório
+              </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>
+                Cidade
+            </mat-label>
+            <input matInput placeholder="Cidade"
+            formControlName="cidade">
+            <mat-error *ngIf="!formularioFornecedor.hasError('required')">
+                Preenchimento obrigatório
+              </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>
+                Estado
+            </mat-label>
+            <input matInput placeholder="Estado"
+            formControlName="estado">
+            <mat-error *ngIf="!formularioFornecedor.hasError('required')">
+                Preenchimento obrigatório
+              </mat-error>
+        </mat-form-field>        
+       </div>
+        <mat-divider></mat-divider>
+        <div class="formulario-descricao">
+        <h2>Dados do Responsavel</h2>
+        </div>
+        <div class="formulario-responsivo">
+        <mat-form-field appearance="outline" style="width: 400px;">
+            <mat-label>
+                Nome
+            </mat-label>
+            <input matInput placeholder="Nome" 
+            formControlName="nome">
+            <mat-error *ngIf="!formularioFornecedor.hasError('required')">
+                Preenchimento obrigatório
+              </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>
+                Função
+            </mat-label>
+            <input matInput placeholder="Função"
+            formControlName="funcao">
+            <mat-error *ngIf="!formularioFornecedor.hasError('required')">
+                Preenchimento obrigatório
+              </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width: 300px;">
+            <mat-label>
+                E-mail
+            </mat-label>
+            <input matInput placeholder="Email" 
+            formControlName="email">
+            <mat-error *ngIf="!formularioFornecedor.hasError('email') && !formularioFornecedor.hasError('required')">
+                E-mail inválido
+              </mat-error>
+            <mat-error *ngIf="!formularioFornecedor.hasError('required')">
+                Preenchimento obrigatório
+              </mat-error>
+        </mat-form-field>       
+       </div>
+   </form>
+</mat-card-content>
+<mat-divider>
+</mat-divider>
+<mat-card-actions align="end">
+   <button mat-mini-fab color="primary" style="margin: 0 5px;" 
+           [disabled]="!formularioFornecedor.valid"
+           (click)="Incluir()"
+           >
+       <mat-icon>save</mat-icon>
+     </button>
+     <button mat-mini-fab color="accent" style="margin: 0 5px;" (click)="Voltar()">
+       <mat-icon>arrow_back</mat-icon>
+     </button>
+ </mat-card-actions>
+ <mat-divider></mat-divider>
+</mat-card>		
+

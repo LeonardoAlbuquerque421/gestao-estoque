@@ -40,9 +40,12 @@ import { MatSortModule } from '@angular/material/sort';
 import { EstoqueComponent } from './pages/estoque/estoque.component';
 import { MatPaginatorIntl, MatPaginatorModule} from '@angular/material/paginator';
 import { MatPaginatorIntlCro } from './shared/MatPaginatorIntlCro';
-import { AdicionarProdutoComponent } from './pages/estoque/adicionar-produto/adicionar-produto.component';
+import { AdicionarProdutoComponent } from './pages/estoque/cadastro-estoque/cadastro-estoque.component';
 import { MatSelectModule } from '@angular/material/select'
 import { HttpClientModule } from '@angular/common/http';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { FornecedorComponent } from './pages/fornecedor/fornecedor.component';
+import { CadastroFornecedorComponent } from './pages/fornecedor/cadastro-fornecedor/cadastro-fornecedor.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +65,9 @@ import { HttpClientModule } from '@angular/common/http';
     MenuLateralComponent,
     EstoqueComponent,
     AdicionarProdutoComponent,
-    ],
+    FornecedorComponent,
+    CadastroFornecedorComponent
+      ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -87,9 +92,12 @@ import { HttpClientModule } from '@angular/common/http';
     MatPaginatorModule,
     MatSelectModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxMaskDirective,
+    NgxMaskPipe
   ],
   providers: [
+    provideNgxMask(),
     {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},
     { provide: MatPaginatorIntl, useClass: MatPaginatorIntlCro}
     ],

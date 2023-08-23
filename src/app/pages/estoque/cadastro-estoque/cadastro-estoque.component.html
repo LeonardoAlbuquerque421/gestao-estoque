@@ -8,7 +8,7 @@
         <form [formGroup]="formProduto">
             <div class="example-form-fields">
             <mat-form-field appearance="outline" 
-            style="width: 30%;margin-right: 5px;">
+            style="width: 40%;margin-right: 5px;">
                 <mat-label>Codigo</mat-label>
                 <input matInput placeholder="Codigo do Produto" formControlName="codigo">
             </mat-form-field>
@@ -29,30 +29,21 @@
         <mat-form-field appearance="outline" 
         style="width: 45%;margin-right: 5px;">
             <mat-label>Quantidade</mat-label>
-            <input matInput placeholder="Quantidade do Produto" formControlName="quantidade" type="number">
+            <input matInput 
+            placeholder="Quantidade do Produto"
+            formControlName="quantidade" 
+            mask="separator" [leadZero]="true">
         </mat-form-field>        
     <mat-form-field appearance="outline">
             <mat-label>Compra</mat-label>
             <span matPrefix style="margin-left: 15px;">R$ &nbsp;</span>
             <input matInput 
             placeholder="Valor pago" 
-            formControlName="compra"             
-            [value]="formProduto.get('compra').value"
-
-            >
-    </mat-form-field>    
+            formControlName="compra"         
+            mask="separator.2" thousandSeparator="." [leadZero]="true">
+        </mat-form-field>    
         </div>
-    <mat-form-field appearance="outline">
-           <mat-label>Venda</mat-label>
-           <span matPrefix style="margin-left: 15px;">R$ &nbsp;</span>
-           <input 
-           matInput 
-           placeholder="Valor para Venda" 
-           formControlName="venda" 
-           [value]="formProduto.get('venda').value"
-           >
-    </mat-form-field>
-</form>
+    </form>
 </mat-card-content>
 <mat-divider>
 </mat-divider>

@@ -4,5 +4,4 @@ export class ProdutoSignature{
     fornecedor:number;
     quantidade:number;
     compra:number;
-    venda:number;
 }

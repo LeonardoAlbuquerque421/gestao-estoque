@@ -6,9 +6,9 @@ import { ProdutoSignature } from 'src/app/model/signature/produtoSignature';
 import { EstoqueService } from 'src/app/services/estoque.service';
 
 @Component({
-  selector: 'app-adicionar-produto',
-  templateUrl: './adicionar-produto.component.html',
-  styleUrls: ['./adicionar-produto.component.scss']
+  selector: 'app-cadastro-estoque',
+  templateUrl: './cadastro-estoque.component.html',
+  styleUrls: ['./cadastro-estoque.component.scss']
 })
 export class AdicionarProdutoComponent {
 
@@ -23,9 +23,8 @@ export class AdicionarProdutoComponent {
       codigo : new FormControl('',Validators.required),
       nome : new FormControl('',Validators.required),
       fornecedor : new FormControl("1"),
-      quantidade : new FormControl(0),
-      compra : new FormControl('',Validators.required),
-      venda : new FormControl('',Validators.required)
+      quantidade : new FormControl('',[Validators.required]),
+      compra : new FormControl('',[Validators.required,Validators.min(0),Validators.max(9999)])
     })
   }
 
@@ -36,10 +35,9 @@ export class AdicionarProdutoComponent {
     produtoSignature.fornecedor = this.fornecedor;
     produtoSignature.quantidade = this.quantidade;
     produtoSignature.compra = this.compra;
-    produtoSignature.venda = this.venda;
 
     this.estoqueService.Incluir(produtoSignature).subscribe(retorno =>{
-      this.modalService.AbrirModal(`Produto ${retorno.nome} incluino no estoque`)      
+      this.modalService.AbrirModal(`Produto ${retorno.nome} incluido no estoque`)      
       this.router.navigate(['/dashboard/estoque']);
     })
   }
@@ -62,9 +60,5 @@ export class AdicionarProdutoComponent {
    }
    get compra() { 
     return this.formProduto.get('compra').value; 
-  }   
-   get venda() { 
-    return this.formProduto.get('venda').value; 
-   }
-
+  }     
 }

@@ -1,0 +1,58 @@
+.imagem{
+    text-align: center;
+}
+.estoque{
+    width: 90vw;
+    height: 88vh;    
+}
+
+.container{
+    h1{
+        margin:0 0;
+    }
+    margin: 7px 7px;
+
+    .titulo{
+        text-align: center;
+        border:solid rgb(146, 137, 137) 1px;
+        box-shadow: 5px 5px lightblue;
+        border-radius: 10px;
+        margin:15px 0px;
+        justify-content: center;
+    }
+}
+
+.example-button-container {
+    display: flex;
+    justify-content: space-around;
+    width: 110px;
+
+    button{
+        margin-right: 20px;
+    }     
+  }
+
+  .mat-mdc-row .mat-mdc-cell {
+    cursor: pointer;
+  }
+  
+  .demo-row-is-clicked {
+    font-weight: bold;
+  }
+
+  .card-incluir{
+    margin-top: 10px;
+    text-align: right;
+    box-shadow: 2px 2px lightblue;
+    .mat-mdc-card-content{
+        padding: 5px 5px;
+    }
+  }
+  .example-full-width {
+    width: 100%;
+  }
+  .paginacao{
+    margin-top: 2px;
+    width: 100%;
+    box-shadow: 2px 2px lightblue;
+  }

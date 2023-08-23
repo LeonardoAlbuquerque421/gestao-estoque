@@ -1,0 +1,36 @@
+.card{
+
+    .titulo-card{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+
+        .titulo{
+            font-size: 30px;
+        }
+    }
+
+    .formulario-responsivo{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    width: 75%;
+
+    margin: 15px auto;
+
+    mat-form-field{
+        margin-right: 5px;
+    }
+
+    .formulario-descricao{
+        h2{
+            margin: 0px 0px;
+            padding: 0px 0px;
+
+
+        }
+    }
+
+}
