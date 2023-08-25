@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ModalService } from 'src/app/emitter/modal.service';
+import { Estoque } from 'src/app/model/estoque';
 import { Fornecedor } from 'src/app/model/fornecedor';
+import { EstoqueResponse } from 'src/app/model/response/estoqueResponse';
 import { FornecedorResponse } from 'src/app/model/response/fornecedorResponse';
 import { ProdutoSignature } from 'src/app/model/signature/produtoSignature';
 import { EstoqueService } from 'src/app/services/estoque.service';
@@ -15,13 +17,17 @@ import { FornecedorService } from 'src/app/services/fornecedor.service';
 })
 export class AdicionarProdutoComponent implements OnInit {
 
+  btnEditar : boolean = false;
+  estoque = new EstoqueResponse();
+  codigoProduto : any;
   formProduto:any;
   fornecedores:Fornecedor[]=[]
 
   constructor(private router:Router , 
     private estoqueService:EstoqueService, 
     private fornecedorService:FornecedorService,
-    private modalService:ModalService
+    private modalService:ModalService,
+    private activatedRoute: ActivatedRoute
     ){
 
     this.formProduto = new FormGroup({
@@ -33,9 +39,40 @@ export class AdicionarProdutoComponent implements OnInit {
     })
   }
   ngOnInit(): void {
+
     this.fornecedorService.Obter().subscribe(x => {
       this.ObterFornecedores(x);
     })
+
+    this.activatedRoute.paramMap.subscribe(params =>{
+      this.codigoProduto = params.get('codigo');
+      if(this.codigoProduto > 0){
+      this.estoqueService.ObterPorCodigo(this.codigoProduto).subscribe(estoque => {   
+        this.btnEditar = true;
+        let editar = this.ObterProduto(estoque);     
+        this.SetarFormulario(editar);
+      })
+    }
+    })  
+  }
+
+  ObterProduto(estoqueResponse:EstoqueResponse[]) : Estoque{
+
+    let estoque = new Estoque();
+    estoque.codigo = estoqueResponse[0].codigo
+    estoque.compra = estoqueResponse[0].compra
+    estoque.quantidade = estoqueResponse[0].quantidade
+    estoque.nome = estoqueResponse[0].nome
+    estoque.fornecedor.id = estoqueResponse[0].fornecedor
+    return estoque;
+  }
+
+  SetarFormulario(estoque : Estoque){
+    this.formProduto.get('codigo').setValue(estoque.codigo);
+    this.formProduto.get('nome').setValue(estoque.nome);
+    this.formProduto.get('fornecedor').setValue(estoque.fornecedor.id);
+    this.formProduto.get('quantidade').setValue(estoque.quantidade);
+    this.formProduto.get('compra').setValue(estoque.compra);
   }
 
   ObterFornecedores(fornecedorResponse : FornecedorResponse[]){
@@ -56,14 +93,22 @@ export class AdicionarProdutoComponent implements OnInit {
     produtoSignature.quantidade = this.quantidade;
     produtoSignature.compra = this.compra;
 
-    this.estoqueService.Incluir(produtoSignature).subscribe(retorno =>{
-      this.modalService.AbrirModal(`Produto ${retorno.nome} incluido no estoque`)      
-      this.router.navigate(['/dashboard/estoque']);
-    })
+    if(this.btnEditar){
+
+    }else{
+      this.estoqueService.Incluir(produtoSignature).subscribe(retorno =>{
+        this.modalService.AbrirModal(`Produto ${retorno.nome} incluido no estoque`)      
+        this.router.navigate(['/dashboard/estoque']);
+      })
+    }
   }
 
   Voltar(){
     this.router.navigate(['/dashboard/estoque']);
+  }
+
+  set codigo(value : number) {
+    
   }
 
   get codigo() { 

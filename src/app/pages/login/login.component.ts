@@ -63,13 +63,11 @@ export class LoginComponent {
 
   EnterSubmit(event : any,form : any) {
     console.log(form.status);
-    
+
   if (event.keyCode === 13 && form.status === "VALID") { 
     this.EfetuarLogin();
   } 
  }
-
-
 
  get usuario() { 
   return this.loginForm.get('usuario').value; 

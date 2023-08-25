@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Estoque } from 'src/app/model/estoque';
 import { EstoqueResponse } from 'src/app/model/response/estoqueResponse';
 import { EstoqueService } from 'src/app/services/estoque.service';
@@ -37,7 +38,7 @@ export class EstoqueComponent implements OnInit , AfterViewInit  {
   estoque : Estoque[]=[];
   dataSource = new MatTableDataSource(this.estoque);
 
-  constructor(private estoqueService:EstoqueService){    
+  constructor(private estoqueService:EstoqueService,private router:Router){    
 }
   ngOnInit(): void {
     this.estoqueService.Obter().subscribe(x =>{
@@ -76,6 +77,10 @@ export class EstoqueComponent implements OnInit , AfterViewInit  {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  Editar(codigo:number){
+    this.router.navigate([`dashboard/cadastro-produto/${codigo}`]);   
   }
 
 }

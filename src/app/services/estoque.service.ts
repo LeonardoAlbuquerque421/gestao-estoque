@@ -17,6 +17,10 @@ export class EstoqueService {
     return this.httpClient.get<EstoqueResponse[]>(this.url)
   }
 
+  ObterPorCodigo(codigo : number) : Observable<EstoqueResponse[]>{
+      let parametros = `${this.url}?codigo=${codigo}`;
+     return this.httpClient.get<EstoqueResponse[]>(parametros);
+  }
 
   Incluir(produtoSignature:ProdutoSignature) : Observable<any>{   
   return this.httpClient.post<any>(this.url,produtoSignature)

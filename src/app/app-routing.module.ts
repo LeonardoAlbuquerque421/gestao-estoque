@@ -18,7 +18,11 @@ const routes: Routes = [
       }
       ,
       {
-        path:'adicionar-produto',component:AdicionarProdutoComponent
+        path:'cadastro-produto',component:AdicionarProdutoComponent
+      }
+      ,
+      {
+        path:"cadastro-produto/:codigo",component:AdicionarProdutoComponent
       }
       ,
       {
@@ -27,6 +31,10 @@ const routes: Routes = [
       ,
       {
         path:"cadastro-fornecedor",component:CadastroFornecedorComponent
+      }
+      ,
+      {
+        path:"cadastro-fornecedor/:codigo",component:CadastroFornecedorComponent
       }
       ,
       {
