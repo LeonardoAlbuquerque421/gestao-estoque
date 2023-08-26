@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { ModalService } from 'src/app/emitter/modal.service';
 import { Estoque } from 'src/app/model/estoque';
 import { Fornecedor } from 'src/app/model/fornecedor';
@@ -17,6 +18,7 @@ import { FornecedorService } from 'src/app/services/fornecedor.service';
 })
 export class AdicionarProdutoComponent implements OnInit {
 
+  titulo:string ="";
   btnEditar : boolean = false;
   estoque = new EstoqueResponse();
   codigoProduto : any;
@@ -42,18 +44,33 @@ export class AdicionarProdutoComponent implements OnInit {
 
     this.fornecedorService.Obter().subscribe(x => {
       this.ObterFornecedores(x);
-    })
+    })   
+    this.TelaEditar();
+  }
 
+  TelaEditar(){
     this.activatedRoute.paramMap.subscribe(params =>{
       this.codigoProduto = params.get('codigo');
       if(this.codigoProduto > 0){
       this.estoqueService.ObterPorCodigo(this.codigoProduto).subscribe(estoque => {   
-        this.btnEditar = true;
         let editar = this.ObterProduto(estoque);     
         this.SetarFormulario(editar);
-      })
-    }
+        this.ParametrosTela(true);
+        })
+      }else{
+        this.ParametrosTela(false);
+      }      
     })  
+  }
+
+  ParametrosTela(editar : boolean){
+    if(editar){
+      this.btnEditar = true;
+      this.titulo = "Editar Produto"  
+    }
+    else{
+      this.titulo = "Cadastrar Produto"
+    }
   }
 
   ObterProduto(estoqueResponse:EstoqueResponse[]) : Estoque{
@@ -94,6 +111,11 @@ export class AdicionarProdutoComponent implements OnInit {
     produtoSignature.compra = this.compra;
 
     if(this.btnEditar){
+      produtoSignature.id = this.codigoProduto;
+      this.estoqueService.Atualizar(produtoSignature).subscribe(retorno =>{
+        this.modalService.AbrirModal(`Produto ${retorno.nome} atualizado`)      
+        this.router.navigate(['/dashboard/estoque']);
+      })
 
     }else{
       this.estoqueService.Incluir(produtoSignature).subscribe(retorno =>{

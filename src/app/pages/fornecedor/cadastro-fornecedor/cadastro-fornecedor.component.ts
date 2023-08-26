@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ModalService } from 'src/app/emitter/modal.service';
 import { Endereco } from 'src/app/model/endereco';
 import { Fornecedor } from 'src/app/model/fornecedor';
@@ -13,12 +13,16 @@ import { FornecedorService } from 'src/app/services/fornecedor.service';
   templateUrl: './cadastro-fornecedor.component.html',
   styleUrls: ['./cadastro-fornecedor.component.scss']
 })
-export class CadastroFornecedorComponent {
-
+export class CadastroFornecedorComponent implements OnInit {
+  id: any;
   formularioFornecedor:any;
   fornecedorSignature : FornecedorSignature;
 
-  constructor(private router:Router, private fornecedorService : FornecedorService , private modalService : ModalService){
+  constructor(
+              private activetedRoute : ActivatedRoute,
+              private router:Router, 
+              private fornecedorService : FornecedorService , 
+              private modalService : ModalService){
 
     this.formularioFornecedor = new FormGroup({
       razaoSocial : new FormControl('',[Validators.required]),
@@ -35,6 +39,17 @@ export class CadastroFornecedorComponent {
       email : new FormControl('',[Validators.required,Validators.email])
     })
 
+  }
+  ngOnInit(): void {
+    this.activetedRoute.paramMap.subscribe(params =>{
+      this.id = params.get('codigo');
+      if(this.id > 0){
+        console.log('editar')
+      }
+      else{
+        console.log('cadastrar')
+      }
+    })
   }
 
   Incluir(){

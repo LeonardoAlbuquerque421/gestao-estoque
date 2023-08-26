@@ -51,6 +51,7 @@ export class EstoqueComponent implements OnInit , AfterViewInit  {
     estoqueResponse.forEach(x =>{
 
       let estoque = new Estoque();
+      estoque.id = x.id;
       estoque.codigo = x.codigo;
       estoque.nome = x.nome;
       estoque.quantidade = x.quantidade

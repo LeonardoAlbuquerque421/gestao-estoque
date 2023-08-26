@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Fornecedor } from 'src/app/model/fornecedor';
 import { FornecedorResponse } from 'src/app/model/response/fornecedorResponse';
 import { FornecedorService } from 'src/app/services/fornecedor.service';
@@ -18,7 +19,11 @@ export class FornecedorComponent implements OnInit {
   fornecedor : Fornecedor[]=[]
   dataSource = new MatTableDataSource(this.fornecedor);
 
-  constructor(private fornecedorService: FornecedorService){
+  constructor
+  (
+    private fornecedorService: FornecedorService,
+    private router : Router
+    ){
   }
 
   ngOnInit(): void {
@@ -29,10 +34,15 @@ export class FornecedorComponent implements OnInit {
     })
   }
 
+  Editar(codigo : number){
+    this.router.navigate([`dashboard/cadastro-fornecedor/${codigo}`]);  
+  }
+
   ObterFornecedores(fornecedorResponse : FornecedorResponse[]){
     fornecedorResponse.forEach(x =>{
 
       let fornecedor = new Fornecedor;
+      fornecedor.id = x.id;
       fornecedor.razaoSocial = x.razaoSocial;
       fornecedor.cnpj = x.cnpj;
       fornecedor.inscricaoEstadual = x.inscricaoEstadual

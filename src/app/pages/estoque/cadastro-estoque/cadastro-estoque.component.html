@@ -1,7 +1,7 @@
 
 <mat-card class="card">
      <mat-card-header>
-        <mat-card-title>Incluir Produtos</mat-card-title>
+        <mat-card-title>{{titulo}}</mat-card-title>
       </mat-card-header>
       <img src="assets/imagens/Adicionar_Produto.jpg">
     <mat-card-content>
@@ -40,8 +40,8 @@
             <input matInput 
             placeholder="Valor pago" 
             formControlName="compra"  
-            type="text"       
-            mask="separator.2" [leadZero]="true">
+            type="text" 
+            mask="separator,2" [leadZero]="true" thousandSeparator=",">
         </mat-form-field>    
         </div>
     </form>
