@@ -150,11 +150,11 @@
               </mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="outline" style="width: 300px;">
+        <mat-form-field  appearance="outline" style="width: 300px;">
             <mat-label>
                 E-mail
             </mat-label>
-            <input matInput placeholder="Email" 
+            <input matInput class="custom-input" placeholder="Email" 
             formControlName="email">
             <mat-error *ngIf="!formularioFornecedor.hasError('email') && !formularioFornecedor.hasError('required')">
                 E-mail inválido
