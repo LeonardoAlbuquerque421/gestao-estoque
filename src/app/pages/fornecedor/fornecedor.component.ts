@@ -3,6 +3,7 @@ import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { ModalService } from 'src/app/emitter/modal.service';
 import { Fornecedor } from 'src/app/model/fornecedor';
 import { FornecedorResponse } from 'src/app/model/response/fornecedorResponse';
 import { FornecedorService } from 'src/app/services/fornecedor.service';
@@ -21,6 +22,7 @@ export class FornecedorComponent implements OnInit {
 
   constructor
   (
+    private modalService : ModalService,
     private fornecedorService: FornecedorService,
     private router : Router
     ){
@@ -29,9 +31,9 @@ export class FornecedorComponent implements OnInit {
   ngOnInit(): void {
     this.fornecedorService.Obter().subscribe(x => {
       this.ObterFornecedores(x);
-      this.dataSource.data = this.fornecedor;
-      
-    })
+      this.dataSource.data = this.fornecedor;      
+    },error => {
+      this.modalService.AbrirModal(error.message);})
   }
 
   Editar(codigo : number){

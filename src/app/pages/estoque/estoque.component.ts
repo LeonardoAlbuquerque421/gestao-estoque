@@ -3,6 +3,8 @@ import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { LoaderService } from 'src/app/emitter/loader.service';
+import { ModalService } from 'src/app/emitter/modal.service';
 import { Estoque } from 'src/app/model/estoque';
 import { EstoqueResponse } from 'src/app/model/response/estoqueResponse';
 import { EstoqueService } from 'src/app/services/estoque.service';
@@ -35,16 +37,23 @@ export class EstoqueComponent implements OnInit , AfterViewInit  {
 
   displayedColumns: string[] = ['Codigo','Nome', 'Quantidade', 'Compra', 'Ação'];
 
+  tela : boolean = false;
   estoque : Estoque[]=[];
   dataSource = new MatTableDataSource(this.estoque);
 
-  constructor(private estoqueService:EstoqueService,private router:Router){    
+  constructor(
+              private estoqueService:EstoqueService,
+              private router:Router,
+              private loader:LoaderService,
+              private modalService:ModalService){    
 }
   ngOnInit(): void {
     this.estoqueService.Obter().subscribe(x =>{
       this.ObterEstoque(x);
-      this.dataSource.data = this.estoque;
-    })
+      this.dataSource.data = this.estoque;  
+    },error => {
+      this.modalService.AbrirModal(error.message);
+    });    
   }
 
   ObterEstoque(estoqueResponse : EstoqueResponse[]){

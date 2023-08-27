@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ProdutoSignature } from '../model/signature/produtoSignature';
-import { Observable, delay } from 'rxjs';
+import { Observable, delay, tap } from 'rxjs';
 import { EstoqueResponse } from '../model/response/estoqueResponse';
+import { LoaderService } from '../emitter/loader.service';
 
 @Injectable({
   providedIn: 'root'

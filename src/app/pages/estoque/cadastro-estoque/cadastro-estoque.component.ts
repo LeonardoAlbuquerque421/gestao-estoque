@@ -19,7 +19,9 @@ import { FornecedorService } from 'src/app/services/fornecedor.service';
 export class AdicionarProdutoComponent implements OnInit {
 
   titulo:string ="";
-  btnEditar : boolean = false;
+  editar : boolean = false;
+  carregamento : boolean = true;
+
   estoque = new EstoqueResponse();
   codigoProduto : any;
   formProduto:any;
@@ -37,7 +39,7 @@ export class AdicionarProdutoComponent implements OnInit {
       nome : new FormControl('',Validators.required),
       fornecedor : new FormControl(''),
       quantidade : new FormControl('',[Validators.required]),
-      compra : new FormControl('',[Validators.required,Validators.min(0),Validators.max(9999)])
+      compra : new FormControl('',[Validators.required,Validators.min(0)])
     })
   }
   ngOnInit(): void {
@@ -65,12 +67,13 @@ export class AdicionarProdutoComponent implements OnInit {
 
   ParametrosTela(editar : boolean){
     if(editar){
-      this.btnEditar = true;
+      this.editar = true;
       this.titulo = "Editar Produto"  
     }
     else{
       this.titulo = "Cadastrar Produto"
     }
+    this.carregamento = false;
   }
 
   ObterProduto(estoqueResponse:EstoqueResponse[]) : Estoque{
@@ -110,7 +113,7 @@ export class AdicionarProdutoComponent implements OnInit {
     produtoSignature.quantidade = this.quantidade;
     produtoSignature.compra = this.compra;
 
-    if(this.btnEditar){
+    if(this.editar){
       produtoSignature.id = this.codigoProduto;
       this.estoqueService.Atualizar(produtoSignature).subscribe(retorno =>{
         this.modalService.AbrirModal(`Produto ${retorno.nome} atualizado`)      
@@ -129,10 +132,6 @@ export class AdicionarProdutoComponent implements OnInit {
     this.router.navigate(['/dashboard/estoque']);
   }
 
-  set codigo(value : number) {
-    
-  }
-
   get codigo() { 
     return this.formProduto.get('codigo').value; 
   }   
@@ -148,4 +147,22 @@ export class AdicionarProdutoComponent implements OnInit {
    get compra() { 
     return this.formProduto.get('compra').value; 
   }     
+
+  get formattedValue(): string {
+    return (this.formProduto.get('compra').value / 100).toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
+  }
+
+  onInput(inputElement: any) {
+    const value = inputElement.value;
+    // Remove caracteres não numéricos
+    const numericValue = parseFloat(value!.replace(/\D/g, '')) || 0;
+
+    // Atualiza o valor numérico
+    this.formProduto.get('compra').setValue(numericValue);
+  }
 }

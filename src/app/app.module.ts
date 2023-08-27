@@ -46,6 +46,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { FornecedorComponent } from './pages/fornecedor/fornecedor.component';
 import { CadastroFornecedorComponent } from './pages/fornecedor/cadastro-fornecedor/cadastro-fornecedor.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LoaderComponent } from './shared/loader/loader.component';
+import { CurrencyFormatPipe } from './pipe/currency-format.pipe';
 
 @NgModule({
   declarations: [
@@ -66,7 +69,9 @@ import { CadastroFornecedorComponent } from './pages/fornecedor/cadastro-fornece
     EstoqueComponent,
     AdicionarProdutoComponent,
     FornecedorComponent,
-    CadastroFornecedorComponent
+    CadastroFornecedorComponent,
+    LoaderComponent,
+    CurrencyFormatPipe
       ],
   imports: [
     BrowserModule,
@@ -94,7 +99,8 @@ import { CadastroFornecedorComponent } from './pages/fornecedor/cadastro-fornece
     ReactiveFormsModule,
     HttpClientModule,
     NgxMaskDirective,
-    NgxMaskPipe
+    NgxMaskPipe,
+    MatProgressSpinnerModule
   ],
   providers: [
     provideNgxMask(),

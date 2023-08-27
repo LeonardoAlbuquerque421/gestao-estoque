@@ -1,4 +1,6 @@
+import { Endereco } from "../endereco";
 import { Ramo } from "../ramo";
+import { Responsavel } from "../responsavel";
 
 export class FornecedorResponse{
 
@@ -14,4 +16,6 @@ export class FornecedorResponse{
     cnpj:number;
     inscricaoEstadual:number;
     ramoDeAtividade: Ramo;
+    endereco: Endereco;
+    responsavel:Responsavel;
 }

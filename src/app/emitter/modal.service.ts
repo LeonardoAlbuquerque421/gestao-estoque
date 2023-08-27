@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { EventEmitter } from '@angular/core';
-import { Modal } from './modal';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ModalComponent } from '../shared/modal/modal.component';
 

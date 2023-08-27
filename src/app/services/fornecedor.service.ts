@@ -17,6 +17,16 @@ export class FornecedorService {
     return this.httpClient.get<FornecedorResponse[]>(this.url)
   }
 
+  ObterPorCodigo(codigo : number) : Observable<FornecedorResponse[]>{
+    let parametros = `${this.url}?id=${codigo}`;
+   return this.httpClient.get<FornecedorResponse[]>(parametros);
+}
+
+Atualizar(produtoSignature:FornecedorSignature){   
+  let parametros = `${this.url}/${produtoSignature.id}`;
+  return this.httpClient.put<FornecedorSignature>(parametros,produtoSignature)
+}
+
   Incluir(fornecedorSignature:FornecedorSignature) : Observable<any>{   
   return this.httpClient.post<any>(this.url,fornecedorSignature)
   }

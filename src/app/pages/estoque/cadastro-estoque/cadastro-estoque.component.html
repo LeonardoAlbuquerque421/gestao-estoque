@@ -1,4 +1,3 @@
-
 <mat-card class="card">
      <mat-card-header>
         <mat-card-title>{{titulo}}</mat-card-title>
@@ -36,12 +35,11 @@
         </mat-form-field>        
     <mat-form-field appearance="outline">
             <mat-label>Compra</mat-label>
-            <span matPrefix style="margin-left: 15px;">R$ &nbsp;</span>
             <input matInput 
             placeholder="Valor pago" 
             formControlName="compra"  
             type="text" 
-            mask="separator,2" [leadZero]="true" thousandSeparator=",">
+            [value]="formattedValue" (input)="onInput($event.target)">
         </mat-form-field>    
         </div>
     </form>

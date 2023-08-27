@@ -1,4 +1,6 @@
-<div class="container">
+<app-loader></app-loader>
+
+<div class="container"> 
     <div class="titulo">        
         <h1>Produtos do Estoque</h1>
     </div>
@@ -29,7 +31,7 @@
       
         <ng-container matColumnDef="Compra">
           <th mat-header-cell *matHeaderCellDef  style="text-align: right;background-color: beige;"> Compra </th>
-          <td mat-cell *matCellDef="let element" style="text-align: right;">R$ {{element.compra}}</td>
+          <td mat-cell *matCellDef="let element" style="text-align: right;">{{element.compra | currencyFormat}}</td>
         </ng-container>    
 
         <ng-container matColumnDef="Ação">

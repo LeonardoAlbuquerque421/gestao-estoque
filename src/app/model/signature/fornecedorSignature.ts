@@ -3,6 +3,7 @@ import { Ramo } from "../ramo";
 import { Responsavel } from "../responsavel";
 
 export class FornecedorSignature{
+    id: number;
     razaoSocial : string;
     cnpj:number;
     inscricaoEstadual:number;

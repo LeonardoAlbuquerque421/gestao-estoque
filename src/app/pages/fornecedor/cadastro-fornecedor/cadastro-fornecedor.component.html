@@ -4,7 +4,7 @@
         <mat-divider></mat-divider>
     </div>
     <mat-card-header class="titulo-card">
-       <mat-card-title class="titulo" >Cadastro de Fornecedores</mat-card-title>
+       <mat-card-title class="titulo" >{{titulo}}</mat-card-title>
      </mat-card-header>
      <div>
         <mat-divider></mat-divider>
@@ -56,8 +56,8 @@
                 <mat-label>Ramo de Atividade</mat-label>
                 <mat-select formControlName="ramoAtividade">
                 <mat-option value="1">Industria</mat-option>
-                <mat-option value="1">Comercio</mat-option>
-                <mat-option value="1">Serviço</mat-option>
+                <mat-option value="2">Comercio</mat-option>
+                <mat-option value="3">Serviço</mat-option>
                 </mat-select>
                 <mat-error *ngIf="!formularioFornecedor.hasError('required')">
                     Preenchimento obrigatório
