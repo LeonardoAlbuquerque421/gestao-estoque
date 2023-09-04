@@ -50,11 +50,11 @@ const routes: Routes = [
         path: 'estoque',
         loadChildren: () => import('../app/module/estoque/estoque.module').then(m => m.EstoqueModule)         
       }
-      // ,
-      // {
-      //   path: 'fornecedor',
-      //   loadChildren: () => import('../app/module/fornecedor/fornecedor.module').then(m => m.FornecedorModule)         
-      // }
+      ,
+      {
+        path: 'fornecedor',
+        loadChildren: () => import('../app/module/fornecedor/fornecedor.module').then(m => m.FornecedorModule)         
+      }
   ] 
   }
   ,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalService } from 'src/app/emitter/modal.service';
@@ -14,7 +14,7 @@ import { FornecedorService } from 'src/app/services/fornecedor.service';
   templateUrl: './cadastro-fornecedor.component.html',
   styleUrls: ['./cadastro-fornecedor.component.scss']
 })
-export class CadastroFornecedorComponent implements OnInit {
+export class CadastroFornecedorComponent {
 
   titulo :string = "";
   editar : boolean = false;
@@ -93,13 +93,13 @@ export class CadastroFornecedorComponent implements OnInit {
       this.fornecedorSignature.id = this.id;
       this.fornecedorService.Atualizar(this.fornecedorSignature).subscribe(retorno =>{
         this.modalService.AbrirModal(`Produto ${this.fornecedorSignature.razaoSocial} foi atualizado`)      
-        this.router.navigate(['/dashboard/fornecedor']);
+        this.router.navigate(['/dashboard/fornecedor/listar']);
       })
 
     }else{
       this.fornecedorService.Incluir(this.fornecedorSignature).subscribe(x => {
         this.modalService.AbrirModal("Fornecedor incluido com sucesso")      
-        this.router.navigate(['/dashboard/fornecedor']);
+        this.router.navigate(['/dashboard/fornecedor/listar']);
       })
     }
   }
@@ -160,7 +160,7 @@ export class CadastroFornecedorComponent implements OnInit {
   }
 
   Voltar(){
-    this.router.navigate(['/dashboard/fornecedor']);
+    this.router.navigate(['/dashboard/fornecedor/listar']);
   }
 
   get razaoSocial() { 
@@ -199,4 +199,5 @@ export class CadastroFornecedorComponent implements OnInit {
   get email() : any { 
     return this.formularioFornecedor.get('email').value; 
   }   
+
 }

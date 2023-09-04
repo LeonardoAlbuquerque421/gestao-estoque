@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -9,11 +9,11 @@ import { FornecedorResponse } from 'src/app/model/response/fornecedorResponse';
 import { FornecedorService } from 'src/app/services/fornecedor.service';
 
 @Component({
-  selector: 'app-fornecedor',
-  templateUrl: './fornecedor.component.html',
-  styleUrls: ['./fornecedor.component.scss']
+  selector: 'app-lista-fornecedor',
+  templateUrl: './lista-fornecedor.component.html',
+  styleUrls: ['./lista-fornecedor.component.scss']
 })
-export class FornecedorComponent implements OnInit {
+export class ListaFornecedorComponent {
 
   displayedColumns: string[] = ['razaoSocial','cnpj', 'inscricaoEstadual','Ação'];
 
@@ -37,7 +37,7 @@ export class FornecedorComponent implements OnInit {
   }
 
   Editar(codigo : number){
-    this.router.navigate([`dashboard/cadastro-fornecedor/${codigo}`]);  
+    this.router.navigate([`dashboard/fornecedor/cadastro-fornecedor/${codigo}`]);  
   }
 
   ObterFornecedores(fornecedorResponse : FornecedorResponse[]){

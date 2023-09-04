@@ -10,8 +10,6 @@ import { MatButtonModule } from '@angular/material/button';
     PrecoComponent
   ],
   imports: [
-    MatIconModule,
-    MatButtonModule,
     CommonModule,
     PrecoRoutingModule
   ]
