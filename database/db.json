@@ -19,7 +19,7 @@
     {
       "codigo": 1,
       "nome": "Coca-cola",
-      "fornecedor": "1",
+      "fornecedor": 1,
       "quantidade": 10,
       "compra": 10,
       "id": 1
@@ -51,9 +51,9 @@
     {
       "codigo": "10",
       "nome": "Guarana",
-      "fornecedor": "1",
+      "fornecedor": 1,
       "quantidade": 2,
-      "compra": "100,25",
+      "compra": 1000,
       "id": 5
     },
     {
@@ -75,7 +75,7 @@
     {
       "codigo": "102",
       "nome": "TESTE DE DEV",
-      "fornecedor": "1",
+      "fornecedor": 1,
       "quantidade": "10",
       "compra": "600.00",
       "id": 8
@@ -86,7 +86,7 @@
       "razaoSocial": "Marco junior",
       "cnpj": "11111111111111",
       "inscricaoEstadual": "111111111111",
-      "ramoDeAtividade": "1",
+      "ramoDeAtividade": "3",
       "endereco": {
         "bairro": "Jardim América da Penha",
         "cep": "03704020",
