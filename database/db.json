@@ -29,13 +29,13 @@
       "nome": "Coca-cola",
       "fornecedor": "1",
       "quantidade": 10,
-      "compra": 10,
+      "compra": 10000,
       "id": 2
     },
     {
       "codigo": 1,
       "nome": "Coca-cola",
-      "fornecedor": "1",
+      "fornecedor": 1,
       "quantidade": 10,
       "compra": 10,
       "id": 3
@@ -43,9 +43,9 @@
     {
       "codigo": 1,
       "nome": "Coca-cola",
-      "fornecedor": "1",
+      "fornecedor": 1,
       "quantidade": 10,
-      "compra": 10,
+      "compra": 1000,
       "id": 4
     },
     {
@@ -69,7 +69,7 @@
       "nome": "Coca-cola light",
       "fornecedor": "1",
       "quantidade": "10",
-      "compra": "15.00",
+      "compra": 1500,
       "id": 7
     },
     {
@@ -77,15 +77,15 @@
       "nome": "TESTE DE DEV",
       "fornecedor": 1,
       "quantidade": "10",
-      "compra": "600.00",
+      "compra": 60000,
       "id": 8
     }
   ],
   "fornecedor": [
     {
       "razaoSocial": "Marco junior",
-      "cnpj": "11111111111111",
-      "inscricaoEstadual": "111111111111",
+      "cnpj": "55108898000108",
+      "inscricaoEstadual": "222222222222",
       "ramoDeAtividade": "3",
       "endereco": {
         "bairro": "Jardim América da Penha",

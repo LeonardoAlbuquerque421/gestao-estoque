@@ -42,15 +42,18 @@ export class LoginComponent {
    const myObserver = {
     next: (x: LoginResponse[]) =>{ 
       if(x.length> 0 && x[0].sucess === true){
-        this.router.navigateByUrl('dashboard/home');
+        this.router.navigateByUrl('dashboard/home/page');
       }else{
         this.modalService.AbrirModal("Não foi possível realizar o login , tente novamente")
+        this.loding =false;
       }
     },
     error: (err: any) => {      
-      this.modalService.AbrirModal(err.message)
+      this.modalService.AbrirModal(err.message);
+      this.loding =false;
     },catch: (c : any)=>{
       this.modalService.AbrirModal(c.message)
+      this.loding =false;
     },
     complete: () => {    
       this.loding = false;

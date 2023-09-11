@@ -13,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDividerModule } from '@angular/material/divider';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 
 
 
@@ -34,7 +35,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatPaginatorModule,
     MatSelectModule,
     MatDividerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxMaskDirective, 
+    NgxMaskPipe
   ]
 })
 export class FornecedorModule { }
